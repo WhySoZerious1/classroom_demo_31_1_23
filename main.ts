@@ -1,3 +1,5 @@
+let LFSL = 0
+let LFSR = 0
 function Soft_Left () {
     maqueen.motorRun(maqueen.Motors.M2, maqueen.Dir.CW, 35)
     maqueen.motorRun(maqueen.Motors.M1, maqueen.Dir.CCW, 35)
@@ -22,9 +24,6 @@ function Hard_Right () {
     maqueen.motorRun(maqueen.Motors.M2, maqueen.Dir.CCW, 60)
     basic.pause(100)
 }
-let LFSR = 0
-let LFSL = 0
-let Intensity = 255
 basic.forever(function () {
     LFSL = maqueen.readPatrol(maqueen.Patrol.PatrolLeft)
     LFSR = maqueen.readPatrol(maqueen.Patrol.PatrolRight)
