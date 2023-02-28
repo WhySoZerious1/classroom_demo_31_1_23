@@ -5,6 +5,13 @@ function Soft_Left () {
     maqueen.motorRun(maqueen.Motors.M1, maqueen.Dir.CCW, 35)
     basic.pause(100)
 }
+function distance_to_stop () {
+    maqueen.motorRun(maqueen.Motors.All, maqueen.Dir.CCW, 60)
+    basic.pause(100)
+    while (maqueen.Ultrasonic(PingUnit.Centimeters) < 10) {
+        maqueen.motorStop(maqueen.Motors.All)
+    }
+}
 function Hard_Left () {
     maqueen.motorRun(maqueen.Motors.M2, maqueen.Dir.CW, 60)
     maqueen.motorRun(maqueen.Motors.M1, maqueen.Dir.CCW, 60)
@@ -25,6 +32,9 @@ function Hard_Right () {
     basic.pause(100)
 }
 basic.forever(function () {
+    if (maqueen.Ultrasonic(PingUnit.Centimeters) < 10) {
+        distance_to_stop()
+    }
     LFSL = maqueen.readPatrol(maqueen.Patrol.PatrolLeft)
     LFSR = maqueen.readPatrol(maqueen.Patrol.PatrolRight)
     if (LFSL == 1 && LFSR == 1) {
