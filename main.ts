@@ -42,7 +42,7 @@ function Avoid () {
         } else {
             Soft_Left()
         }
-        if (maqueen.readPatrol(maqueen.Patrol.PatrolLeft) == 0 || maqueen.readPatrol(maqueen.Patrol.PatrolLeft) == 0) {
+        if (maqueen.readPatrol(maqueen.Patrol.PatrolLeft) == 0 || maqueen.readPatrol(maqueen.Patrol.PatrolRight) == 0) {
             avoiding_protocol = 0
             Hard_Right()
         }
