@@ -1,3 +1,4 @@
+let avoiding_protocol = 0
 let LFSL = 0
 let LFSR = 0
 function Soft_Left () {
@@ -30,6 +31,22 @@ function Hard_Right () {
     maqueen.motorRun(maqueen.Motors.M1, maqueen.Dir.CW, 60)
     maqueen.motorRun(maqueen.Motors.M2, maqueen.Dir.CCW, 60)
     basic.pause(100)
+}
+function Avoid () {
+    maqueen.motorRun(maqueen.Motors.All, maqueen.Dir.CW, 60)
+    basic.pause(100)
+    Hard_Right()
+    while (avoiding_protocol == 1) {
+        if (maqueen.Ultrasonic(PingUnit.Centimeters) < 10) {
+            Soft_Right()
+        } else {
+            Soft_Left()
+        }
+        if (maqueen.readPatrol(maqueen.Patrol.PatrolLeft) == 0 || maqueen.readPatrol(maqueen.Patrol.PatrolLeft) == 0) {
+            avoiding_protocol = 0
+            Hard_Right()
+        }
+    }
 }
 basic.forever(function () {
     if (maqueen.Ultrasonic(PingUnit.Centimeters) < 10) {
