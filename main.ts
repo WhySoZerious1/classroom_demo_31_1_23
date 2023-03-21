@@ -33,7 +33,7 @@ function Hard_Right () {
     basic.pause(100)
 }
 function Avoid () {
-    maqueen.motorRun(maqueen.Motors.All, maqueen.Dir.CW, 60)
+    maqueen.motorRun(maqueen.Motors.All, maqueen.Dir.CCW, 60)
     basic.pause(100)
     Hard_Right()
     while (avoiding_protocol == 1) {
@@ -50,7 +50,7 @@ function Avoid () {
 }
 basic.forever(function () {
     if (maqueen.Ultrasonic(PingUnit.Centimeters) < 10) {
-        distance_to_stop()
+        Avoid()
     }
     LFSL = maqueen.readPatrol(maqueen.Patrol.PatrolLeft)
     LFSR = maqueen.readPatrol(maqueen.Patrol.PatrolRight)
