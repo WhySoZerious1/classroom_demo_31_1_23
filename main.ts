@@ -43,7 +43,7 @@ function Avoid () {
         if (maqueen.readPatrol(maqueen.Patrol.PatrolLeft) == 0 || maqueen.readPatrol(maqueen.Patrol.PatrolRight) == 0) {
             avoiding_protocol = 0
             Hard_Right()
-            Right = 0
+            Right = 1
         }
     }
 }
@@ -63,10 +63,10 @@ basic.forever(function () {
         if (Right) {
             Right = 0
         }
-    } else if (LFSL == 1) {
+    } else if (LFSR == 0) {
         Soft_Right()
         Right = 1
-    } else if (LFSR == 1) {
+    } else if (LFSL == 0) {
         Soft_Left()
         Right = 0
     } else {
